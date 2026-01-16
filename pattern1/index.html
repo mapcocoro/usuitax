@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>薄井学税理士事務所 | Pattern 1 - Trust & Professional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a5f;
+      --primary-light: #2d5a8a;
+      --accent: #c9a227;
+      --text: #1a1a1a;
+      --text-light: #555555;
+      --bg: #ffffff;
+      --bg-light: #f7f8fa;
+      --bg-dark: #0d1b2a;
+      --border: #e0e4e8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      line-height: 1.8;
+      background: var(--bg);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      text-decoration: none;
+    }
+
+    .logo-main {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+    }
+
+    .logo-sub {
+      font-size: 0.6875rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--primary-light);
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg);
+      z-index: 150;
+      padding: 5rem 2rem 2rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .mobile-menu .btn {
+      margin-top: 1rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 10rem 2rem 6rem;
+      background: linear-gradient(135deg, rgba(13, 27, 42, 0.85) 0%, rgba(30, 58, 95, 0.8) 100%),
+                  url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80') center/cover no-repeat;
+      color: white;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 40%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/></svg>') center/cover;
+      opacity: 0.5;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: var(--bg-dark);
+      padding: 0.5rem 1rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-lead {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-features {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-feature-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .hero-feature-text {
+      font-size: 0.875rem;
+    }
+
+    .hero-feature-text strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    /* Credential */
+    .credential {
+      padding: 4rem 2rem;
+      background: var(--bg-light);
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .credential-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .credential-photo {
+      aspect-ratio: 3/4;
+      background: var(--bg-light);
+      border: 3px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .credential-content h2 {
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .credential-name {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .credential-name span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-light);
+      margin-left: 1rem;
+    }
+
+    .credential-career {
+      background: white;
+      padding: 1.5rem;
+      border-left: 4px solid var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .credential-career h3 {
+      font-size: 0.875rem;
+      color: var(--accent);
+      font-family: 'Noto Sans JP', sans-serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .credential-career p {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .credential-text {
+      color: var(--text-light);
+      font-size: 0.9375rem;
+    }
+
+    /* Section */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      color: var(--text-light);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.125rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .service-card p {
+      color: var(--text-light);
+      font-size: 0.875rem;
+    }
+
+    /* Strength */
+    .strength {
+      background: var(--bg-light);
+      padding: 6rem 2rem;
+    }
+
+    .strength-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .strength-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .strength-card {
+      background: white;
+      padding: 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .strength-number {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .strength-content h3 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .strength-content p {
+      color: var(--text-light);
+      font-size: 0.875rem;
+    }
+
+    /* Office Info */
+    .office {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .office-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .office-map {
+      aspect-ratio: 4/3;
+      background: url('https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&q=80') center/cover no-repeat;
+      border-radius: 8px;
+    }
+
+    .office-info h2 {
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+
+    .office-table {
+      width: 100%;
+    }
+
+    .office-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .office-table th {
+      padding: 1rem 0;
+      text-align: left;
+      font-weight: 500;
+      color: var(--text-light);
+      font-size: 0.875rem;
+      width: 100px;
+    }
+
+    .office-table td {
+      padding: 1rem 0;
+      font-size: 0.9375rem;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 5rem 2rem;
+      background: var(--primary);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .cta .btn {
+      background: var(--accent);
+      color: var(--bg-dark);
+    }
+
+    .cta .btn:hover {
+      background: #dab52d;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-dark);
+      color: white;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-desc {
+      font-size: 0.875rem;
+      opacity: 0.7;
+      line-height: 1.8;
+    }
+
+    .footer-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: white;
+      opacity: 0.7;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.75rem;
+      opacity: 0.5;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .credential-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .credential-photo {
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .strength-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .office-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        font-size: 15px;
+      }
+
+      .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+      }
+
+      .logo-main {
+        font-size: 1rem;
+      }
+
+      .logo-sub {
+        font-size: 0.5rem;
+      }
+
+      nav, .header-inner > .btn {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        padding: 5rem 1rem 3rem;
+      }
+
+      .hero-badge {
+        font-size: 0.6875rem;
+        padding: 0.375rem 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero h1 {
+        font-size: 1.5rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+
+      .hero-lead {
+        font-size: 0.9375rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-features {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+      }
+
+      .hero-feature-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .hero-feature-text {
+        font-size: 0.75rem;
+      }
+
+      .hero-feature-text strong {
+        font-size: 0.875rem;
+      }
+
+      .credential {
+        padding: 2.5rem 1rem;
+      }
+
+      .credential-inner {
+        gap: 2rem;
+      }
+
+      .credential-photo {
+        max-width: 200px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+      }
+
+      .credential-content h2 {
+        font-size: 1.25rem;
+        text-align: center;
+      }
+
+      .credential-name {
+        font-size: 1.375rem;
+        text-align: center;
+      }
+
+      .credential-name span {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.25rem;
+        font-size: 0.8125rem;
+      }
+
+      .credential-career {
+        padding: 1rem;
+      }
+
+      .credential-career h3 {
+        font-size: 0.75rem;
+      }
+
+      .credential-career p {
+        font-size: 0.875rem;
+      }
+
+      .credential-text {
+        font-size: 0.875rem;
+      }
+
+      .section {
+        padding: 3rem 1rem;
+      }
+
+      .section-header {
+        margin-bottom: 2rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.375rem;
+      }
+
+      .section-header p {
+        font-size: 0.875rem;
+      }
+
+      .services-grid {
+        gap: 1rem;
+      }
+
+      .service-card {
+        padding: 1.25rem;
+      }
+
+      .service-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .service-card h3 {
+        font-size: 1rem;
+      }
+
+      .service-card p {
+        font-size: 0.8125rem;
+      }
+
+      .strength {
+        padding: 3rem 1rem;
+      }
+
+      .strength-card {
+        padding: 1.25rem;
+        gap: 1rem;
+      }
+
+      .strength-number {
+        font-size: 2rem;
+      }
+
+      .strength-content h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .strength-content p {
+        font-size: 0.8125rem;
+      }
+
+      .office {
+        padding: 3rem 1rem;
+      }
+
+      .office-grid {
+        gap: 2rem;
+      }
+
+      .office-map {
+        aspect-ratio: 16/10;
+      }
+
+      .office-info h2 {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .office-table th {
+        font-size: 0.75rem;
+        width: 80px;
+        padding: 0.75rem 0;
+      }
+
+      .office-table td {
+        font-size: 0.8125rem;
+        padding: 0.75rem 0;
+      }
+
+      .cta {
+        padding: 3rem 1rem;
+      }
+
+      .cta h2 {
+        font-size: 1.375rem;
+      }
+
+      .cta p {
+        font-size: 0.875rem;
+      }
+
+      footer {
+        padding: 2.5rem 1rem 1.5rem;
+      }
+
+      .footer-inner {
+        gap: 2rem;
+      }
+
+      .footer-brand {
+        font-size: 1rem;
+      }
+
+      .footer-desc {
+        font-size: 0.8125rem;
+      }
+
+      .footer-title {
+        font-size: 0.8125rem;
+      }
+
+      .footer-links a {
+        font-size: 0.8125rem;
+      }
+
+      .footer-bottom {
+        font-size: 0.6875rem;
+        margin-top: 2rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 1.375rem;
+      }
+
+      .logo-main {
+        font-size: 1rem;
+      }
+
+      nav a {
+        font-size: 0.6875rem;
+      }
+
+      .strength-number {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-main">薄井学税理士事務所</div>
+        <div class="logo-sub">USUI TAX ACCOUNTANT OFFICE</div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">事務所紹介</a></li>
+          <li><a href="#services">サービス</a></li>
+          <li><a href="#strength">特徴</a></li>
+          <li><a href="#access">アクセス</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn">無料相談</a>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu">
+    <a href="#about" onclick="toggleMenu()">事務所紹介</a>
+    <a href="#services" onclick="toggleMenu()">サービス</a>
+    <a href="#strength" onclick="toggleMenu()">特徴</a>
+    <a href="#access" onclick="toggleMenu()">アクセス</a>
+    <a href="#contact" class="btn" onclick="toggleMenu()">無料相談</a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">元 東京国税局（調査部）</div>
+      <h1>税務のプロが、<br>あなたの経営を守ります。</h1>
+      <p class="hero-lead">東京国税局での経験を活かし、税務調査対策から節税まで、千葉ニュータウンの中小企業・個人事業主の皆様を全力でサポートいたします。</p>
+      <a href="#" class="btn">まずは無料相談 →</a>
+
+      <div class="hero-features">
+        <div class="hero-feature">
+          <div class="hero-feature-icon">🏛️</div>
+          <div class="hero-feature-text">
+            <strong>国税局出身</strong>
+            税務調査を知り尽くした税理士
+          </div>
+        </div>
+        <div class="hero-feature">
+          <div class="hero-feature-icon">📍</div>
+          <div class="hero-feature-text">
+            <strong>地域密着</strong>
+            千葉ニュータウンで10年以上
+          </div>
+        </div>
+        <div class="hero-feature">
+          <div class="hero-feature-icon">💬</div>
+          <div class="hero-feature-text">
+            <strong>親身な対応</strong>
+            お客様目線のアドバイス
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="credential" id="about">
+    <div class="credential-inner">
+      <div class="credential-photo">代表者写真</div>
+      <div class="credential-content">
+        <h2>税理士紹介</h2>
+        <div class="credential-name">薄井 学<span>うすい まなぶ</span></div>
+        <div class="credential-career">
+          <h3>経歴</h3>
+          <p>東京国税局（調査部）、東京都内および千葉県下の税務署にて勤務<br>平成26年8月 薄井学税理士事務所 開業</p>
+        </div>
+        <p class="credential-text">国税局での経験を活かし、税務調査への対応はもちろん、日々の経理から決算・確定申告まで、地元の中小企業・個人事業主の皆様に寄り添ったサービスを提供しております。「気軽に相談できる税理士」を目指しています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="section-header">
+      <h2>サービス内容</h2>
+      <p>お客様のニーズに合わせた税務サービスを提供いたします</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>法人税務顧問</h3>
+        <p>月次での経理チェック、決算対策、税務申告まで一貫してサポート。経営に専念できる環境を整えます。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <h3>個人確定申告</h3>
+        <p>個人事業主の方の確定申告を代行。青色申告で節税効果を最大化するアドバイスも行います。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>税務調査対応</h3>
+        <p>元国税局の経験を活かし、税務調査への立会い・対応をサポート。事前対策もお任せください。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>相続・贈与</h3>
+        <p>相続税の申告、生前贈与の計画など、資産承継に関するご相談に対応いたします。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚀</div>
+        <h3>会社設立支援</h3>
+        <p>法人設立の手続きから、設立後の届出、記帳指導まで、創業をトータルでサポートします。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h3>経営相談</h3>
+        <p>資金繰り、融資相談、事業計画など、税務以外の経営課題についてもアドバイスいたします。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="strength" id="strength">
+    <div class="strength-inner">
+      <div class="section-header">
+        <h2>選ばれる理由</h2>
+        <p>薄井学税理士事務所の強み</p>
+      </div>
+      <div class="strength-grid">
+        <div class="strength-card">
+          <div class="strength-number">01</div>
+          <div class="strength-content">
+            <h3>国税局出身の安心感</h3>
+            <p>東京国税局の調査部門で培った経験があるからこそ、税務調査のポイントを熟知。的確なアドバイスと万全の対策が可能です。</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-number">02</div>
+          <div class="strength-content">
+            <h3>地域に根ざした信頼</h3>
+            <p>千葉ニュータウンで開業して10年以上。地元の中小企業・個人事業主の皆様と共に成長してきました。</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-number">03</div>
+          <div class="strength-content">
+            <h3>わかりやすい説明</h3>
+            <p>専門用語を使わず、お客様にわかりやすい言葉でご説明。疑問点はいつでもお気軽にご質問いただけます。</p>
+          </div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-number">04</div>
+          <div class="strength-content">
+            <h3>柔軟な料金体系</h3>
+            <p>お客様の規模や状況に合わせた料金設定。まずはお気軽にご相談ください。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="office" id="access">
+    <div class="office-grid">
+      <div class="office-map"></div>
+      <div class="office-info">
+        <h2>事務所概要</h2>
+        <table class="office-table">
+          <tr>
+            <th>事務所名</th>
+            <td>薄井学税理士事務所</td>
+          </tr>
+          <tr>
+            <th>代表者</th>
+            <td>税理士 薄井 学</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>〒270-1344<br>千葉県印西市草深2376-4</td>
+          </tr>
+          <tr>
+            <th>電話/FAX</th>
+            <td>0476-47-6757</td>
+          </tr>
+          <tr>
+            <th>メール</th>
+            <td>usuitax@gmail.com</td>
+          </tr>
+          <tr>
+            <th>開業</th>
+            <td>平成26年8月</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2>まずはお気軽にご相談ください</h2>
+    <p>初回相談は無料です。税務に関するお悩み、何でもお聞かせください。</p>
+    <a href="#" class="btn">無料相談のお申し込み →</a>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">薄井学税理士事務所</div>
+        <p class="footer-desc">東京国税局出身の税理士が、千葉ニュータウンの<br>中小企業・個人事業主の皆様をサポートします。</p>
+      </div>
+      <div>
+        <div class="footer-title">サービス</div>
+        <ul class="footer-links">
+          <li><a href="#">法人税務顧問</a></li>
+          <li><a href="#">個人確定申告</a></li>
+          <li><a href="#">税務調査対応</a></li>
+          <li><a href="#">相続・贈与</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">事務所情報</div>
+        <ul class="footer-links">
+          <li><a href="#">事務所紹介</a></li>
+          <li><a href="#">料金について</a></li>
+          <li><a href="#">アクセス</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 薄井学税理士事務所 All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.hamburger').classList.toggle('active');
+      document.querySelector('.mobile-menu').classList.toggle('active');
+      document.body.style.overflow = document.querySelector('.mobile-menu').classList.contains('active') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>
