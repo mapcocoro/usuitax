@@ -1297,6 +1297,12 @@
   </footer>
 
   <script>
+    // ページ読み込み時にトップにスクロール
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     function toggleMenu() {
       document.querySelector('.hamburger').classList.toggle('active');
       document.querySelector('.mobile-menu').classList.toggle('active');
